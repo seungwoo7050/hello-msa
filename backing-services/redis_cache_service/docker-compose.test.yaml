@@ -1,0 +1,20 @@
+name: redis_test
+
+services:
+  redis_under_test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: redis_service_test_container
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis_test_volume:/data
+    networks:
+      - redis_test_network
+
+volumes:
+  redis_test_volume:
+
+networks:
+  redis_test_network:
